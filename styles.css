@@ -1,5 +1,5 @@
 :root {
-    --color_yellow: rgb(255,238,0);
+    --color_yellow: rgb(255, 238, 0);
     --dark-background-color: rgba(17, 17, 17, 0.53);
 }
 
@@ -27,7 +27,8 @@ body {
     z-index: 1000;
     /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); */
     box-sizing: border-box;
-    transition: top 0.4s; /* transition effect when sliding up & down */
+    transition: top 0.4s;
+    /* transition effect when sliding up & down */
 }
 
 #navbar a {
@@ -60,7 +61,8 @@ section {
 /* Override text alignment for hero section */
 #hero {
     text-align: left;
-    padding-top: 100px; /* spacing for the top */
+    padding-top: 100px;
+    /* spacing for the top */
 }
 
 /* Hero Section Container */
@@ -277,6 +279,7 @@ footer {
 
 /* For Phones */
 @media screen and (max-width: 480px) {
+
     .hero-line1,
     .hero-line2 {
         font-size: 2em;
@@ -304,4 +307,72 @@ footer {
     .footer-section {
         margin: 10px 0;
     }
+}
+
+
+.grid-container {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    margin: 0;
+    flex: 1 1 calc(50% - 40px);
+    background-color: #111;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card h2 {
+    font-size: 3rem;
+    color: #FFD700;
+    margin: 0;
+}
+
+.card p {
+    color: #aaa;
+}
+
+.icons-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.icon-box {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.badge {
+    background-color: #FFD700;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.pause-button {
+    background-color: #222;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.pause-button:hover {
+    background-color: #FFD700;
+    color: #000;
 }
