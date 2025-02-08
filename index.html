@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    <nav id="navbar">
+        <ul>
+            <a href="/index.html">Home</a>
+            <a href="/projects.html">Projects</a>
+        </ul>
+    </nav>
     <section id="hero">
         <div class="hero-container">
             <div class="hero-text">
@@ -66,21 +72,15 @@
         </ul>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="card">
-        <h2 class="section-title">📬 Contact</h2>
-        <p>For commissions, inquiries, seeing more work, or more information, join my <strong>Discord Server</strong>:</p>
-        <button class="btn yellow">Join now →</button>
-    </section>
-
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-section">
             <h3>🔍 Lorem ipsum dolor<br> </h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
-            <a href="https://discord.gg/Bd276qugx8" target="_blank" class="btn yellow">Join the discord</a>
+            <a href="https://discord.gg/Bd276qugx8" target="_blank" class="btn yellow">Lorem ipsum</a>
             <a href="" class="btn dark">Back to top</a>
         </div>
-    
+
         <div class="footer-section">
             <h4> Navigation</h4>
             <ul>
@@ -92,17 +92,37 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
-    
-        <div class="footer-section">
-            <h4> Quick Links</h4>
-            <a href="https://discord.gg/Bd276qugx8" target="_blank" class="btn dark">Discord Server</a>
-            <a href="https://www.roblox.com/users/453288946/profile" target="_blank" class="btn dark">Roblox Profile</a>
-        </div>
-    
+
         <div class="footer-section">
             <h4>👷‍♂️ Made by CaptainMentallic</h4>
         </div>
-    </footer>    
+    </footer>
+    <script>
+        var navbar = document.getElementById('navbar');
+        var prevScrollPos = window.pageYOffset;
+        var scrollUpThreshold = 100; // Threshold for upward scroll before showing navbar
+        var accumulatedScrollUp = 0;
+
+        window.addEventListener('scroll', function () {
+            var currentScrollPos = window.pageYOffset;
+
+            if (prevScrollPos > currentScrollPos || currentScrollPos < scrollUpThreshold) {
+                // Scrolling up
+                accumulatedScrollUp += prevScrollPos - currentScrollPos;
+                if (accumulatedScrollUp > scrollUpThreshold || currentScrollPos < scrollUpThreshold) {
+                    navbar.style.top = "0";
+                    accumulatedScrollUp = 0; // Reset after showing navbar
+                }
+            } else {
+                // Scrolling down
+                navbar.style.top = "-100px";
+                accumulatedScrollUp = 0; // Reset if scrolling down
+            }
+
+            prevScrollPos = currentScrollPos;
+        });
+    </script>
+
 </body>
 
 </html>

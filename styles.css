@@ -1,5 +1,6 @@
 :root {
     --color_yellow: rgb(255,238,0);
+    --dark-background-color: rgba(17, 17, 17, 0.53);
 }
 
 body {
@@ -14,6 +15,33 @@ body {
     line-height: 1.6;
 }
 
+#navbar {
+    background: var(--dark-background-color);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    transition: top 0.4s; /* transition effect when sliding up & down */
+}
+
+#navbar a {
+    color: var(--color_yellow);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#navbar a:hover {
+    color: white;
+}
+
 /* Global Section Layout */
 section {
     max-width: 800px;
@@ -25,7 +53,7 @@ section {
 /* Override text alignment for hero section */
 #hero {
     text-align: left;
-    padding-top: 50px;
+    padding-top: 100px; /* spacing for the top */
 }
 
 /* Section Titles (yellow) */
@@ -123,7 +151,7 @@ a {
 
 /* Footer styles */
 footer {
-    background: rgba(17, 17, 17, 0.53);
+    background: var(--dark-background-color);
     margin-top: 50px;
     padding: 20px;
     width: 100%;
