@@ -47,20 +47,6 @@
         </ul>
     </section>
 
-    <!-- Past Work Section -->
-    <section id="projects" class="card">
-        <h2 class="section-title">🛠️ Past Work</h2>
-        <ul>
-            <li><strong>Inventory System:</strong> Full inventory system including drag and drop, item stacking, and
-                auto-saving.</li>
-            <li><strong>Block System:</strong> Block system with placing/destroying blocks and terrain generation to
-                create the map.</li>
-            <li><strong>Round System:</strong> Round system with easy customization.</li>
-            <li><strong>Leaderboard:</strong> Leaderboard system.</li>
-        </ul>
-        <a href="#" class="btn yellow">See game →</a>
-    </section>
-
     <!-- Familiar With Section -->
     <section id="skills" class="card">
         <h2 class="section-title">🛠️ Familiar With</h2>
@@ -77,7 +63,7 @@
         <div class="footer-section">
             <h3>🔍 Lorem ipsum dolor<br> </h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
-            <a href="https://discord.gg/Bd276qugx8" target="_blank" class="btn yellow">Lorem ipsum</a>
+            <a href="" class="btn yellow">Lorem ipsum</a>
             <a href="" class="btn dark">Back to top</a>
         </div>
 
@@ -94,35 +80,11 @@
         </div>
 
         <div class="footer-section">
-            <h4>👷‍♂️ Made by CaptainMentallic</h4>
+            <h4>👷‍♂️ Made from scratch by CaptainMentallic</h4>
         </div>
     </footer>
-    <script>
-        var navbar = document.getElementById('navbar');
-        var prevScrollPos = window.pageYOffset;
-        var scrollUpThreshold = 100; // Threshold for upward scroll before showing navbar
-        var accumulatedScrollUp = 0;
 
-        window.addEventListener('scroll', function () {
-            var currentScrollPos = window.pageYOffset;
-
-            if (prevScrollPos > currentScrollPos || currentScrollPos < scrollUpThreshold) {
-                // Scrolling up
-                accumulatedScrollUp += prevScrollPos - currentScrollPos;
-                if (accumulatedScrollUp > scrollUpThreshold || currentScrollPos < scrollUpThreshold) {
-                    navbar.style.top = "0";
-                    accumulatedScrollUp = 0; // Reset after showing navbar
-                }
-            } else {
-                // Scrolling down
-                navbar.style.top = "-100px";
-                accumulatedScrollUp = 0; // Reset if scrolling down
-            }
-
-            prevScrollPos = currentScrollPos;
-        });
-    </script>
-
+    <script src="js/navbar.js"></script>
 </body>
 
 </html>
