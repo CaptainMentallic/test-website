@@ -50,17 +50,17 @@ section {
     text-align: center;
 }
 
-/* Override text alignment for hero section */
-#hero {
-    text-align: left;
-    padding-top: 100px; /* spacing for the top */
-}
-
 /* Section Titles (yellow) */
 .section-title {
     color: var(--color_yellow);
     font-size: 2em;
     margin-bottom: 20px;
+}
+
+/* Override text alignment for hero section */
+#hero {
+    text-align: left;
+    padding-top: 100px; /* spacing for the top */
 }
 
 /* Hero Section Container */
@@ -146,7 +146,7 @@ a {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(38, 38, 38, 0.5)) repeat 0 0;
     padding: 20px;
     margin: 20px auto;
     width: 80%;
