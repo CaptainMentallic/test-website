@@ -12,7 +12,6 @@ Rarely accept percentage based pay
 - **Clear Communication:** 100% transparency
 - **Updates:** See progress photos every day 
 - **Customization:** Customizable features wherever needed
-- **Free refund:** Free refund if I'm unable to complete the task or if it ends up being buggy
 
 ### 🛠️ Past Work  
 - *[Inventory System](#)* – Full inventory system including drag and drop, item stacking, and auto saving.
