@@ -17,6 +17,7 @@ var themes = {
 var yellowThemeChange = document.getElementById("yellow-theme-change");
 var purpleThemeChange = document.getElementById("purple-theme-change");
 
+// change css variables and save theme to local storage
 function changeTheme(themeName) {
     var theme = themes[themeName];
     document.documentElement.style.setProperty('--main-color', theme.main);
