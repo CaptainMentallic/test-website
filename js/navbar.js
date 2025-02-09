@@ -1,3 +1,6 @@
+// Hides/shows navbar on scroll
+// upwards scroll threshold: 100
+
 var navbar = document.getElementById('navbar');
 var prevScrollPos = window.pageYOffset;
 var scrollUpThreshold = 100; // Threshold for upward scroll before showing navbar

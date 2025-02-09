@@ -341,7 +341,7 @@ footer {
 
 .project-card {
     margin: 0;
-    flex: 1 1 calc(50% - 40px);
+    flex: 1 1 calc(33.333% - 40px);
     background-color: #111;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
