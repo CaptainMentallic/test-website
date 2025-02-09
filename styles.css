@@ -1,12 +1,26 @@
 :root {
+    /* THEMES */
     --color_yellow: rgb(255, 238, 0);
+    --text-color-1: rgb(255, 255, 255);
+    --text-shade-1: rgb(204, 204, 204);
+
+    --color-purple: rgb(89, 41, 229);
+    --text-color-2: rgb(253, 223, 223);
+
+    /* OTHER */
     --dark-background-color: rgba(17, 17, 17, 0.53);
+}
+
+html {
+    scroll-behavior: smooth;
+
 }
 
 body {
     margin: 0;
     padding: 0;
     background: url("assets/texture.png");
+    background-color: #000;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -90,7 +104,7 @@ section {
 }
 
 .hero-line2 {
-    color: #cccccc;
+    color: rgb(204, 204, 204);
 }
 
 .hero-line3 {
@@ -246,6 +260,87 @@ footer {
     background: #333;
 }
 
+.grid-container {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    margin: 0;
+    flex: 1 1 calc(50% - 40px);
+    background-color: #111;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card h1 {
+    font-size: 3rem;
+    color: #FFD700;
+    margin: 0;
+}
+
+.card h2{
+    font-size: 2rem;
+    margin: 0;
+}
+
+.card h3 {
+    line-height: 2;
+    margin: 0;
+}
+
+.card p {
+    color: #aaa;
+    line-height: auto;
+}
+
+.icons-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.icon-box {
+    background-color: #222;
+    border-radius: 10px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+}
+
+#portfolio-header {
+    text-align: center;
+    font-size: 40px;
+}
+
+.projects-container {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-card {
+    margin: 0;
+    flex: 1 1 calc(50% - 40px);
+    background-color: #111;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-top: 30px;
+}
+
+
 /* --------------------------------------- */
 /* MEDIA QUERIES FOR RESPONSIVENESS */
 /* --------------------------------------- */
@@ -307,72 +402,4 @@ footer {
     .footer-section {
         margin: 10px 0;
     }
-}
-
-
-.grid-container {
-    margin-top: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card {
-    margin: 0;
-    flex: 1 1 calc(50% - 40px);
-    background-color: #111;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    margin-bottom: 20px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-.card h2 {
-    font-size: 3rem;
-    color: #FFD700;
-    margin: 0;
-}
-
-.card p {
-    color: #aaa;
-}
-
-.icons-container {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
-
-.icon-box {
-    background-color: #222;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.badge {
-    background-color: #FFD700;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.pause-button {
-    background-color: #222;
-    color: #fff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.pause-button:hover {
-    background-color: #FFD700;
-    color: #000;
 }
