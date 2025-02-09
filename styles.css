@@ -1,3 +1,29 @@
+/* Global Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Prevent horizontal scrolling */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: url("assets/texture.png");
+    background-color: #000;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 :root {
     /* THEMES */
     --color_yellow: rgb(255, 238, 0);
@@ -13,22 +39,9 @@
 
 html {
     scroll-behavior: smooth;
-
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background: url("assets/texture.png");
-    background-color: #000;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-}
-
+/* Navbar */
 #navbar {
     /* background: var(--dark-background-color); */
     padding: 10px 20px;
@@ -75,8 +88,7 @@ section {
 /* Override text alignment for hero section */
 #hero {
     text-align: left;
-    padding-top: 100px;
-    /* spacing for the top */
+    padding-top: 100px; /* spacing for the top */
 }
 
 /* Hero Section Container */
@@ -162,7 +174,7 @@ a {
 }
 
 .card {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(38, 38, 38, 0.5)) repeat 0 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(38, 38, 38, 0.5));
     padding: 20px;
     margin: 20px auto;
     width: 80%;
@@ -178,7 +190,6 @@ footer {
     padding: 20px;
     width: 100%;
     max-width: 100%;
-    /* Remove fixed height so it can grow based on content */
     min-height: 300px;
 }
 
@@ -260,6 +271,7 @@ footer {
     background: #333;
 }
 
+/* Grid Containers */
 .grid-container {
     margin-top: 60px;
     display: flex;
@@ -338,8 +350,9 @@ footer {
     margin-right: 10px;
     margin-left: 10px;
     padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
-
 
 /* --------------------------------------- */
 /* MEDIA QUERIES FOR RESPONSIVENESS */
@@ -374,7 +387,6 @@ footer {
 
 /* For Phones */
 @media screen and (max-width: 480px) {
-
     .hero-line1,
     .hero-line2 {
         font-size: 2em;
@@ -401,5 +413,17 @@ footer {
 
     .footer-section {
         margin: 10px 0;
+    }
+    
+    /* Make grid and project cards take full width on phones */
+    .grid-container .card,
+    .projects-container .project-card {
+        flex: 1 1 100%;
+    }
+    
+    /* Optionally scale down the hero image on small devices */
+    .hero-image {
+        width: 100px;
+        height: 100px;
     }
 }
