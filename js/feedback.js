@@ -1,6 +1,7 @@
 // handles the feedback form and sends it to a discord webhook
 
 var webhookUrl = "process.env.DISCORD_WEBHOOK_URL";
+// I know this can be easily found but it's just a webhook
 
 // convert formdata to object
 function formDataToObject(formData) {
