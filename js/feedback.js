@@ -1,4 +1,4 @@
-// handles the feedback form and sends it to my discord webhook
+// handles the feedback form and sends it to a discord webhook
 
 var webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 
