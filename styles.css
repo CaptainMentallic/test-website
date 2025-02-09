@@ -3,42 +3,36 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* THEME */
+    --main-color: #FFD700;
+    --secondary-color: #ffffff;
+    --tertiary-color: #bbbbbb; /* text shade */
+
+    /* OTHER */
+    --dark-background-color: rgba(17, 17, 17, 0.53);
+    --avatar-background-color: #444444
+}
+
 /* Prevent horizontal scrolling */
 body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     background: url("assets/texture.png");
-    background-color: #000;
+    background-color: #000000;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
+    color:var(--secondary-color)
 }
 
 /* Ensure images are responsive */
 img {
     max-width: 100%;
     height: auto;
-}
-
-:root {
-    /* THEMES */
-    --color_yellow: rgb(255, 238, 0);
-    --text-color-1: rgb(255, 255, 255);
-    --text-shade-1: rgb(204, 204, 204);
-
-    --color-purple: rgb(89, 41, 229);
-    --text-color-2: rgb(253, 223, 223);
-
-    /* OTHER */
-    --dark-background-color: rgba(17, 17, 17, 0.53);
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 /* Navbar */
@@ -59,7 +53,7 @@ html {
 }
 
 #navbar a {
-    color: var(--color_yellow);
+    color: var(--main-color);
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
@@ -80,7 +74,7 @@ section {
 
 /* Section Titles (yellow) */
 .section-title {
-    color: var(--color_yellow);
+    color: var(--main-color);
     font-size: 2em;
     margin-bottom: 20px;
 }
@@ -112,23 +106,23 @@ section {
 }
 
 .hero-line1 {
-    color: #ffffff;
+    color: var(--secondary-color);
 }
 
 .hero-line2 {
-    color: rgb(204, 204, 204);
+    color: var(--tertiary-color);
 }
 
 .hero-line3 {
     font-size: 1.8em;
     margin: 5px 0 0;
     line-height: 1.1;
-    color: var(--color_yellow);
+    color: var(--main-color);
 }
 
 /* Hero Image with Circular Frame and Grey Background */
 .hero-image {
-    background-color: #444;
+    background-color: var(--avatar-background-color);
     border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -158,7 +152,7 @@ li {
 
 a {
     text-decoration: none;
-    color: var(--color_yellow);
+    color: var(--main-color);
 }
 
 #projects {
@@ -170,18 +164,9 @@ a {
 /* Discord Contact */
 .discord {
     font-size: 1.2em;
-    color: var(--color_yellow);
+    color: var(--main-color);
 }
 
-.card {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(38, 38, 38, 0.5));
-    padding: 20px;
-    margin: 20px auto;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
-}
 
 /* Footer styles */
 footer {
@@ -195,7 +180,7 @@ footer {
 
 .footer {
     background: #0a0a0a9e;
-    color: white;
+    color: var(--secondary-color);
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -212,13 +197,13 @@ footer {
 
 .footer-section h3,
 .footer-section h4 {
-    color: #ffdd00;
+    color: var(--main-color);
     margin-bottom: 10px;
 }
 
 .footer-section p {
     margin-bottom: 15px;
-    color: #bbb;
+    color: var(--tertiary-color);
 }
 
 .footer-section ul {
@@ -231,14 +216,14 @@ footer {
 
 .footer-section ul li a {
     text-decoration: none;
-    color: white;
+    color: var(--secondary-color);
     opacity: 0.8;
     transition: 0.3s;
 }
 
 .footer-section ul li a:hover {
     opacity: 1;
-    color: #ffdd00;
+    color: var(--main-color);
 }
 
 .btn {
@@ -253,18 +238,18 @@ footer {
 }
 
 .yellow {
-    background: #ffdd00;
+    background: var(--main-color);
     color: black;
     font-weight: bold;
 }
 
 .yellow:hover {
-    background: #e6c800;
+    background: var(--main-color);
 }
 
 .dark {
     background: #222;
-    color: white;
+    color: var(--tertiary-color);
 }
 
 .dark:hover {
@@ -280,8 +265,12 @@ footer {
 }
 
 .card {
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
     margin: 0;
     flex: 1 1 calc(50% - 40px);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(38, 38, 38, 0.5));
     background-color: #111;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -293,7 +282,7 @@ footer {
 
 .card h1 {
     font-size: 3rem;
-    color: #FFD700;
+    color: var(--main-color);
     margin: 0;
 }
 
@@ -308,8 +297,12 @@ footer {
 }
 
 .card p {
-    color: #aaa;
+    color: var(--tertiary-color);
     line-height: auto;
+}
+
+.card:hover, .project-card:hover {
+    transform: scale(1.01);
 }
 
 .icons-container {
