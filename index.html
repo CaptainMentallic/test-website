@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="assets/profilepicture.png">
 </head>
+
 <body>
     <nav id="navbar">
         <ul>
@@ -28,6 +29,34 @@
             <a href="#portfolio-header">Portfolio</a>
         </ul>
     </nav>
+
+    <div id="feedback-popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Submit Feedback</h2>
+            <form id="feedback-form">
+                <label for="name">Type:</label>
+                <select id="feedback-type-select">
+                    <option value="Feedback">Feedback</option>
+                    <option value="BugReport">Bug Report</option>
+                </select>
+                <br>
+                <label for="description">Description:</label>
+                <textarea id="message" name="message" required></textarea>
+                <input type="file" id="photos" name="photos" accept="image/*" multiple>
+
+                <div id="paste-frame" class="paste-frame">
+                    Paste or drag & drop images here...
+                </div>
+                <input type="file" id="fileInput" multiple accept="image/*">
+                <div id="previewContainer" class="preview-container"></div>
+
+                <br>
+                <button type="submit" class="btn yellow">Send</button>
+            </form>
+        </div>
+    </div>
+
     <section id="hero">
         <div class="hero-container">
             <div class="hero-text">
@@ -46,14 +75,14 @@
             <h2>About Me</h2>
             <p>
                 Hey, I'm CaptainMentallic, a Roblox scripter from Canada with over 2+ years of experience.<br><br>
-                I'm familiar with a few roblox libraries/frameworks such as PrvdMWrong, Blink, ProfileService, and ReplicaService.<br>
-                <br><strong>I am only accepting commisions.</strong>
+                I'm familiar with a few roblox libraries/frameworks such as PrvdMWrong, Blink, ProfileService, and
+                ReplicaService.<br>
             </p>
         </div>
         <div class="card">
             <h1>100%</h1>
             <h3>Transparency, reliablilty, and dedication</h3>
-                
+
             <p>Make your request, and I'll be there to assist.</p>
         </div>
         <div class="card">
@@ -61,9 +90,10 @@
             <p>
                 Only accepting <strong>Robux</strong> based off DevEx rates.<br>
                 Fine with being payed pre or post work completion.<br>
+                <br><strong>I am only accepting commisions.</strong>
             </p>
         </div>
-    </div>  
+    </div>
 
     <h1 id="portfolio-header">Portfolio</h1>
     <div class="projects-container">
@@ -92,7 +122,7 @@
             <h3>Man I hate being sober - Chief Keef</h3>
             <p>3 shots call it a hattrick</p>
         </div>
-    </div>  
+    </div>
 
     <div class="grid-container">
         <div class="card">
@@ -114,32 +144,32 @@
         </div>
         <div class="card">
             <h2>Experience</h3>
-            <p>
-                <strong>What I have experience in:</strong><br>
-                - Datastore Systems<br>                
-                - Backend Systems (Shop, Inventory, Blocks, etc)<br>
-                - Obbies/Progression games/systems<br>
-                - Spawn systems<br>
-                <strong>What I'm not experienced with:</strong><br>
-                - Advanced gun systems <br>
-                - Physics/Vehicles <br>
-                - VFX <br>
-                - Movement systems
-            </p>
+                <p>
+                    <strong>What I have experience in:</strong><br>
+                    - Datastore Systems<br>
+                    - Backend Systems (Shop, Inventory, Blocks, etc)<br>
+                    - Obbies/Progression games/systems<br>
+                    - Spawn systems<br>
+                    <strong>What I'm not experienced with:</strong><br>
+                    - Advanced gun systems <br>
+                    - Physics/Vehicles <br>
+                    - VFX <br>
+                    - Movement systems
+                </p>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-section">
-            <h3>🔍 Lorem ipsum dolor<br> </h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
-            <a href="" class="btn yellow">Lorem ipsum</a>
+            <h3>🔍 Find a bug or have a suggestion?<br> </h3>
+            <p>Please press the button below to submit a form.</p>
+            <a class="btn yellow" id="feedback-button">Submit feedback</a>
             <a href="#hero" class="btn dark">Back to top</a>
         </div>
 
         <div class="footer-section">
-            <h4>Navigation</h4>
+            <h4>🗺️Navigation</h4>
             <ul>
                 <li><a href="#main-container">About me</a></li>
                 <li><a href="#portfolio-header">Portfolio/Past work</a></li>
@@ -147,7 +177,7 @@
         </div>
 
         <div class="footer-section">
-            <h4>Theme</h4>
+            <h4>🎨Theme</h4>
             <p>Change theme:</p>
             <ul>
                 <li><a class="btn" id="yellow-theme-change">Yellow</a></li>
@@ -166,6 +196,7 @@
     <script src="js/navbar.js"></script>
     <script src="js/buttons.js"></script>
     <script src="js/smoothscroll.js"></script>
+    <script src="js/feedback.js"></script>
 </body>
 
 </html>

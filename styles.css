@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -6,7 +8,8 @@
     /* THEME */
     --main-color: #FFD700;
     --secondary-color: #ffffff;
-    --tertiary-color: #bbbbbb; /* text shade */
+    --tertiary-color: #bbbbbb;
+    /* text shade */
 
     /* OTHER */
     --dark-background-color: rgba(17, 17, 17, 0.53);
@@ -24,7 +27,7 @@ body {
     background-attachment: fixed;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color:var(--secondary-color)
+    color: var(--secondary-color)
 }
 
 img {
@@ -75,7 +78,8 @@ section {
 
 #hero {
     text-align: left;
-    padding-top: 100px; /* spacing for the top */
+    padding-top: 100px;
+    /* spacing for the top */
 }
 
 .hero-container {
@@ -168,7 +172,7 @@ a {
 }
 
 .yellow:hover {
-    background: var(--main-color);
+    background: #e6c200;
 }
 
 .dark {
@@ -209,7 +213,7 @@ a {
     margin: 0;
 }
 
-.card h2{
+.card h2 {
     font-size: 2rem;
     margin: 0;
 }
@@ -224,7 +228,8 @@ a {
     line-height: auto;
 }
 
-.card:hover, .project-card:hover {
+.card:hover,
+.project-card:hover {
     transform: scale(1.01);
 }
 
@@ -327,6 +332,163 @@ footer {
     color: var(--main-color);
 }
 
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #111;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: var(--main-color);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-align: left;
+    display: block;
+}
+
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 5px;
+    background: #222;
+    color: var(--secondary-color);
+    resize: none;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-label {
+    align-self: center;
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--main-color);
+    color: black;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    width: 50%;
+}
+
+.custom-file-label:hover {
+    background-color: #e6c200;
+}
+
+.paste-frame {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    min-height: 50px;
+    margin-bottom: 10px;
+}
+
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    padding: 0;
+    margin: 0;
+}
+
+.preview {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+
+.preview img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.preview .remove-btn {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    cursor: pointer;
+    line-height: 12px;
+    padding: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .popup-content {
+        width: 95%;
+    }
+}
+
+
 /* --------------------------------------- */
 /* MEDIA QUERIES FOR RESPONSIVENESS */
 /* --------------------------------------- */
@@ -360,6 +522,7 @@ footer {
 
 /* For Phones */
 @media screen and (max-width: 480px) {
+
     .hero-line1,
     .hero-line2 {
         font-size: 2em;
@@ -387,13 +550,13 @@ footer {
     .footer-section {
         margin: 10px 0;
     }
-    
+
     /* Make grid and project cards take full width on phones */
     .grid-container .card,
     .projects-container .project-card {
         flex: 1 1 100%;
     }
-    
+
     /* Optionally scale down the hero image on small devices */
     .hero-image {
         width: 100px;
