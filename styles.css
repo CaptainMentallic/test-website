@@ -1,4 +1,3 @@
-/* Global Reset */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -14,7 +13,6 @@
     --avatar-background-color: #444444
 }
 
-/* Prevent horizontal scrolling */
 body {
     margin: 0;
     padding: 0;
@@ -29,13 +27,11 @@ body {
     color:var(--secondary-color)
 }
 
-/* Ensure images are responsive */
 img {
     max-width: 100%;
     height: auto;
 }
 
-/* Navbar */
 #navbar {
     /* background: var(--dark-background-color); */
     padding: 10px 20px;
@@ -64,7 +60,6 @@ img {
     color: white;
 }
 
-/* Global Section Layout */
 section {
     max-width: 800px;
     margin: 0 auto;
@@ -72,27 +67,23 @@ section {
     text-align: center;
 }
 
-/* Section Titles (yellow) */
 .section-title {
     color: var(--main-color);
     font-size: 2em;
     margin-bottom: 20px;
 }
 
-/* Override text alignment for hero section */
 #hero {
     text-align: left;
     padding-top: 100px; /* spacing for the top */
 }
 
-/* Hero Section Container */
 .hero-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Hero Text */
 .hero-text {
     text-align: left;
     margin-right: 20px;
@@ -120,7 +111,6 @@ section {
     color: var(--main-color);
 }
 
-/* Hero Image with Circular Frame and Grey Background */
 .hero-image {
     background-color: var(--avatar-background-color);
     border-radius: 50%;
@@ -140,7 +130,6 @@ section {
     display: block;
 }
 
-/* Lists */
 ul {
     list-style: none;
     padding: 0;
@@ -159,71 +148,6 @@ a {
     margin-top: 100px;
     align-items: center;
     text-align: center;
-}
-
-/* Discord Contact */
-.discord {
-    font-size: 1.2em;
-    color: var(--main-color);
-}
-
-
-/* Footer styles */
-footer {
-    background: var(--dark-background-color);
-    margin-top: 50px;
-    padding: 20px;
-    width: 100%;
-    max-width: 100%;
-    min-height: 300px;
-}
-
-.footer {
-    background: #0a0a0a9e;
-    color: var(--secondary-color);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 40px;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin: 10px;
-}
-
-.footer-section h3,
-.footer-section h4 {
-    color: var(--main-color);
-    margin-bottom: 10px;
-}
-
-.footer-section p {
-    margin-bottom: 15px;
-    color: var(--tertiary-color);
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin: 5px 0;
-}
-
-.footer-section ul li a {
-    text-decoration: none;
-    color: var(--secondary-color);
-    opacity: 0.8;
-    transition: 0.3s;
-}
-
-.footer-section ul li a:hover {
-    opacity: 1;
-    color: var(--main-color);
 }
 
 .btn {
@@ -249,14 +173,13 @@ footer {
 
 .dark {
     background: #222;
-    color: var(--tertiary-color);
+    color: var(--secondary-color);
 }
 
 .dark:hover {
     background: #333;
 }
 
-/* Grid Containers */
 .grid-container {
     margin-top: 60px;
     display: flex;
@@ -345,6 +268,63 @@ footer {
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+footer {
+    background: var(--dark-background-color);
+    margin-top: 50px;
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
+    min-height: 300px;
+}
+
+.footer {
+    background: #0a0a0a9e;
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 40px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: var(--main-color);
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+    color: var(--tertiary-color);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    opacity: 1;
+    color: var(--main-color);
 }
 
 /* --------------------------------------- */
