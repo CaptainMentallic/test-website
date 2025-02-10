@@ -1,7 +1,6 @@
 // handles the feedback form and sends it to a discord webhook
 
 var webhookUrl = "process.env.DISCORD_WEBHOOK_URL";
-// I know this can be easily found but it's just a webhook on my private server so it doesn't matter
 
 // convert formdata to object
 function formDataToObject(formData) {
@@ -27,6 +26,52 @@ function getSelectionData() {
     return selectedOption.text;
 }
 
+// post to discord webhook
+function postToDiscord(json, isFormData = false) {
+    fetch(webhookUrl, {
+        method: "POST",
+        headers: isFormData
+            ? {}
+            : {
+                "Content-Type": "application/json",
+            },
+        body: isFormData ? json : JSON.stringify(json),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(text => {
+            if (text) {
+                try {
+                    const data = JSON.parse(text);
+                    console.log("Message sent:", data);
+                } catch (parseError) {
+                    console.log("Message sent, but response is not valid JSON:", text);
+                }
+            } else {
+                console.log("Message sent successfully, no content returned.");
+            }
+        })
+        .catch(error => {
+            console.error("Error sending message:", error);
+        });
+}
+
+// get the users ip using a 3rd party api
+async function fetchUserIP() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        console.error('Error fetching IP:', error);
+        throw error;
+    }
+}
+
 // page load
 document.addEventListener("DOMContentLoaded", function () {
     var popup = document.getElementById("feedback-popup");
@@ -41,6 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var MAX_FILES = 10;
     var photos = [];
 
+    var feedbackColor = 5814783;
+    var bugreportColor = 16711680;
+
     // prevent the images from showing up in textbox when pasted
     pasteFrame.addEventListener("paste", function (event) {
         event.preventDefault();
@@ -53,16 +101,16 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const reader = new FileReader();
+        var reader = new FileReader();
         reader.onload = function (e) {
-            const previewEl = document.createElement("div");
+            var previewEl = document.createElement("div");
             previewEl.className = "preview";
 
-            const img = document.createElement("img");
+            var img = document.createElement("img");
             img.src = e.target.result;
             previewEl.appendChild(img);
 
-            const removeBtn = document.createElement("button");
+            var removeBtn = document.createElement("button");
             removeBtn.className = "remove-btn";
             removeBtn.innerHTML = "×";
             removeBtn.addEventListener("click", function () {
@@ -79,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // files selected from file input
     fileInput.addEventListener("change", function (event) {
-        const files = Array.from(event.target.files);
+        var files = Array.from(event.target.files);
         files.forEach(file => {
             if (file.type.startsWith("image/")) {
                 createPreview(file);
@@ -90,11 +138,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // pasted images
     document.addEventListener("paste", function (event) {
-        const items = (event.clipboardData || window.clipboardData).items;
+        var items = (event.clipboardData || window.clipboardData).items;
         for (let i = 0; i < items.length; i++) {
-            const item = items[i];
+            var item = items[i];
             if (item.type.indexOf("image") !== -1) {
-                const file = item.getAsFile();
+                var file = item.getAsFile();
                 createPreview(file);
             }
         }
@@ -113,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
     pasteFrame.addEventListener("drop", function (event) {
         event.preventDefault();
         pasteFrame.classList.remove("dragover");
-        const files = Array.from(event.dataTransfer.files);
+        var files = Array.from(event.dataTransfer.files);
         files.forEach(file => {
             if (file.type.startsWith("image/")) {
                 createPreview(file);
@@ -145,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // form submit
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
         event.preventDefault();
         var formData = new FormData(form);
         var formObject = formDataToObject(formData);
@@ -155,45 +203,41 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        var feedbackType = getSelectionData().toString();
-        if (photos.length > 0 && photos[0].name) {
+        var feedbackType = getSelectionData().toString(); // "Feedback" or "Bug Report"
+        var embed = {
+            title: feedbackType,
+            description: formObject.message,
+            color: feedbackType == "Feedback" ? feedbackColor : bugreportColor,
+            footer: {
+                text: "Sent from IP: " + await fetchUserIP()
+            },
+            timestamp: new Date().toISOString()
+        };
+
+        if (photos.length > 0 && photos[0].name) { // report includes photos
             var payload = new FormData();
-            payload.append("payload_json", JSON.stringify({
-                content: feedbackType.concat(": ", formObject.message)
-            }));
+
             photos.forEach((file, index) => {
                 if (file.name) {
                     payload.append(`file${index}`, file);
                 }
             });
-
-            fetch(webhookUrl, {
-                method: "POST",
-                body: payload
-            })
-                .then(response => response.json())
-                .then(data => console.log("Message sent with files:", data))
-                .catch(error => console.error("Error sending message:", error));
-        } else { // Text only
-            fetch(webhookUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    content: feedbackType.concat(": ", formObject.message)
-                })
-            })
-                .then(response => response.json())
-                .then(data => console.log("Message sent:", data))
-                .catch(error => console.error("Error sending message:", error));
+            payload.append("payload_json", JSON.stringify({
+                content: null,
+                embeds: [embed]
+            }));
+            postToDiscord(payload, true);
+        } else { // report includes text only
+            postToDiscord({
+                content: null,
+                embeds: [embed]
+            });
         }
-
-        alert("Feedback submitted successfully, thank you!");
-        
+        // reset everything & display message
         photos = [];
         previewContainer.innerHTML = "";
         form.reset();
         popup.style.display = "none";
+        alert("Feedback submitted successfully, thank you!");
     });
 });
