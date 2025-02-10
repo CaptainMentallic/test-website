@@ -36,6 +36,6 @@ window.commands = {
             console.error("Error fetching latest commit:", error);
         }
 
-        return console.log(`Current version: ${version}\nLatest commit: ${data.sha}\nReleased: ${timeAgo}`);
+        return console.log(`Current version: ${version}\nLatest commit: (${data.sha.substring(0,7)}) ${data.sha}\nReleased: ${timeAgo}`);
     }
 }
