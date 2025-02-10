@@ -14,29 +14,28 @@ window.commands = {
 
             var data = await response.json();
 
+            // convert date to time ago string (ex. 4 hours, 26 minutes and 3 seconds ago)
             var commitDate = new Date(data.commit.author.date);
             var now = new Date();
             var diffInSeconds = Math.floor((now - commitDate) / 1000);
 
-            var days = Math.floor(diffInSeconds / (3600 * 24));
-            diffInSeconds %= 3600 * 24;
+            var timeUnits = [
+                { label: "day", value: Math.floor(diffInSeconds / (3600 * 24)) },
+                { label: "hour", value: Math.floor((diffInSeconds % (3600 * 24)) / 3600) },
+                { label: "minute", value: Math.floor((diffInSeconds % 3600) / 60) },
+                { label: "second", value: diffInSeconds % 60 }
+            ];
+            var result = timeUnits
+                .filter(unit => unit.value > 0)
+                .map(unit => `${unit.value} ${unit.label}${unit.value !== 1 ? 's' : ''}`)
+                .join(" and ");
 
-            var hours = Math.floor(diffInSeconds / 3600);
-            diffInSeconds %= 3600;
-
-            var minutes = Math.floor(diffInSeconds / 60);
-            var seconds = diffInSeconds % 60;
-
-            var timeAgo = `${days} day${days !== 1 ? 's' : ''}, ` +
-                `${hours} hour${hours !== 1 ? 's' : ''}, ` +
-                `${minutes} minute${minutes !== 1 ? 's' : ''}, ` +
-                `and ${seconds} second${seconds !== 1 ? 's' : ''} ago`;
+            var timeAgo = result ? `${result} ago` : "Just now";
 
         } catch (error) {
             console.error("Error fetching latest commit:", error);
         }
 
-        console.log("Current version: " + version)
-        console.log("Released: " + timeAgo);
+        return console.log(`Current version: ${version}\nLatest commit: ${data.sha}\nReleased: ${timeAgo}`);
     }
 }
